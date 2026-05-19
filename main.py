@@ -39,3 +39,25 @@ class Priorizador:
 prioridad = Priorizador.asignar_prioridad(tarea1)
 print("Prioridad:", prioridad)
 
+
+
+class Gestor:
+    def __init__(self):
+        self.tareas = []
+
+    def agregar_tarea(self, tarea):
+        self.tareas.append(tarea)
+
+    def listar_tareas(self):
+        print("\n===== LISTADO DE TAREAS =====")
+        for tarea in self.tareas:
+            print(
+                "ID:", tarea.id,
+                "| Nombre:", tarea.nombre,
+                "| Materia: ", tarea.materia,
+                "| Estado: ", tarea.estado
+            )
+
+gestor = Gestor()
+gestor.agregar_tarea(tarea1)
+gestor.listar_tareas()
