@@ -14,3 +14,7 @@ class VentanaPrincipal:
         self.ventana.geometry("850x600")
 
         self.crear_interfaz()
+
+    def iniciar(self):
+        self.ventana.mainloop()
+
