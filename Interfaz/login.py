@@ -41,3 +41,16 @@ class Login:
             command=self.validar_login
         ).pack(pady=15)
 
+    def validar_login(self):
+        usuario = self.entry_usuario.get()
+        contrasena = self.entry_contrasena()
+
+        if self.usuario.validar(usuario, contrasena):
+            messagebox.showinfo("Acceso correcto", "Inicio de sesion exitoso")
+            self.ventana_login.destroy()
+
+            ventana_principal = VentanaPrincipal()
+            ventana_principal.iniciar()
+        else:
+            messagebox.showerror("Error", "Usuario o contraseña incorrectos")
+
