@@ -19,5 +19,25 @@ class Login:
     def iniciar(self):
         self.ventana_login.mainloop()
 
+    def crear_interfaz_login(self):
+        tk.Label(
+            self.ventana_login,
+            text="SIGTA",
+            font=("Arial", 20, "bold")
+        ).pack(pady=10)
 
+        tk.Label(
+            self.ventana_login,
+            text="Sistema Inteligente de Tareas Académicas"
+        ).pack(pady=5)
+
+        tk.Label(self.ventana_login, text="Usuario").pack()
+        self.entry_usuario = tk.Entry(self.ventana_login)
+        self.entry_usuario.pack(pady=5)
+
+        tk.Button(
+            self.ventana_login,
+            text="Ingresar",
+            command=self.validar_login
+        ).pack(pady=15)
 
