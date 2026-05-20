@@ -22,3 +22,10 @@ class GestorTareas:
 
     def listar_tareas(self):
         return self.tareas
+
+    def completar_tarea(self, id_tarea):
+        for tarea in self.tareas:
+            if tarea-id == id_tarea:
+                self.tareas.remove(tarea)
+                return True
+        return False
