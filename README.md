@@ -2,17 +2,22 @@
 Sistema Inteligente de Gestión de Tareas Académicas
 📌 Introducción
 
-SIGTA es un proyecto desarrollado en Python que busca dar solución a una problemática común entre estudiantes universitarios: la dificultad para gestionar adecuadamente tareas académicas, fechas de entrega y prioridades dentro de múltiples asignaturas.
+SIGTA es un proyecto desarrollado en Python que busca dar solución a una problemática común entre estudiantes universitarios: la dificultad para gestionar adecuadamente tareas académicas, fechas de entrega y prioridades dentro de múltiples asignaturas.                                                                     
 
-Actualmente, muchos estudiantes administran sus actividades mediante agendas físicas, aplicaciones dispersas o recordatorios poco organizados, generando olvidos, incumplimientos y dificultades para priorizar responsabilidades académicas.
+Actualmente, muchos estudiantes administran sus actividades mediante agendas físicas, aplicaciones dispersas o recordatorios poco organizados, generando olvidos, incumplimientos y dificultades para priorizar responsabilidades académicas.                                                                                      
 
+ 
 Esta situación puede afectar el rendimiento estudiantil, especialmente en periodos con alta carga académica, donde existen múltiples entregas simultáneas, parciales y proyectos.
+
 
 En respuesta a esta necesidad, SIGTA propone un sistema inteligente para la gestión de tareas académicas que permite registrar actividades, calcular prioridades según fechas de entrega, generar alertas, administrar estados de tareas y facilitar el seguimiento de compromisos académicos mediante una interfaz gráfica amigable.
 
+
 El sistema incorpora inicio de sesión, gestión centralizada de tareas y herramientas orientadas a mejorar la organización estudiantil.
 
+
 Este proyecto fue desarrollado aplicando el paradigma de Programación Orientada a Objetos (POO), permitiendo modelar estructuradamente componentes del sistema como usuarios, tareas, gestores y priorizadores.
+
 
 🚀 Características
 
@@ -93,20 +98,7 @@ Maneja autenticación de usuario.
 VentanaPrincipal
 
 Gestiona interacción con el usuario mediante interfaz gráfica.
-📂 Organización del proyecto
-SIGTA/
-│
-├── main.py
-│
-├── modelo/
-│   ├── usuario.py
-│   ├── tarea.py
-│   ├── priorizador.py
-│   └── gestor_tareas.py
-│
-└── interfaz/
-    ├── login.py
-    └── ventana_principal.py
+
 ▶️ Ejecución del proyecto
 Clonar el repositorio:
 git clone URL_DEL_REPOSITORIO
