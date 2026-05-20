@@ -1,7 +1,16 @@
-class Usuario:
-    def __init__(self):
-        self.usuario_correcto = "admin"
-        self.contrasena_correcta = "1234"
+import tkinter as tk
+from tkinter import messagebox
+from tkinter import ttk
+from datetime import datetime
 
-    def validar(self, usuario, contrasena):
-        return usuario == self.usuario_correcto and contrasena == self.contrasena_correcta
+from Model.gestor_tareas import GestorTareas
+
+class VentanaPrincipal:
+    def __init__(self):
+        self.gestor = GestorTareas()
+
+        self.ventana = tk.Tk()
+        self.ventana.title("SIGTA - Gestión de Tareas")
+        self.ventana.geometry("850x600")
+
+        self.crear_interfaz()
