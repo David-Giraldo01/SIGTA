@@ -16,3 +16,8 @@ class Login:
 
         self.crear_interfaz_login()
 
+    def iniciar(self):
+        self.ventana_login.mainloop()
+
+
+
