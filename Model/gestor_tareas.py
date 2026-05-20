@@ -36,3 +36,19 @@ class GestorTareas:
                 self.tareas.remove(tarea)
                 return True
         return False
+
+    def obtener_alertas(self):
+        alertas: []
+
+        for tarea in self.tareas:
+            dias = tarea.calcular_dias_restantes()
+
+            if tarea.estado != "Completada":
+                if dias <0:
+                    alertas.append(f"La tarea '{tarea.nombre}' está vencida.")
+                elif dias == 0:
+                    alertas.append(f"La tarea '{tarea.nombre}' vence hoy.")
+                elif dias <= 2:
+                    alertas.append(f"La tarea '{tarea.nombre}' vence en {dias} día(s).")
+
+        return alertas
