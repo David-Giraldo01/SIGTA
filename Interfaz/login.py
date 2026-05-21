@@ -2,7 +2,7 @@ import tkinter as tk
 from tkinter import messagebox
 
 from Model.usuario import Usuario
-from interfaz.ventana_principal import VentanaPrincipal
+from Interfaz.ventana_principal import VentanaPrincipal
 
 
 class Login:
@@ -34,6 +34,10 @@ class Login:
         tk.Label(self.ventana_login, text="Usuario").pack()
         self.entry_usuario = tk.Entry(self.ventana_login)
         self.entry_usuario.pack(pady=5)
+
+        tk.Label(self.ventana_login, text="Contraseña:").pack()
+        self.entry_contrasena = tk.Entry(self.ventana_login, show="*")
+        self.entry_contrasena.pack(pady=5)
 
         tk.Button(
             self.ventana_login,
