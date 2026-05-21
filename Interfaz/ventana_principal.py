@@ -30,7 +30,7 @@ class VentanaPrincipal:
 
         tk.Label(frame, text="Nombre:").grid(row=0, column=0)
         self.entry_nombre = tk.Entry(frame, width=30)
-        self.entry_nombre.grid(row=1, column=1)
+        self.entry_nombre.grid(row=0, column=1)
 
         tk.Label(frame, text="Descripción:").grid(row=1, column=0)
         self.entry_descripcion = tk.Entry(frame, width=30)
