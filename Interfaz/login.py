@@ -45,16 +45,18 @@ class Login:
             command=self.validar_login
         ).pack(pady=15)
 
+        tk.Button(self.ventana_login,
+            text="Registrar nuevo usuario",
+            command=self.registrar_usuario
+        ).pack(pady=5)
+
     def validar_login(self):
         usuario = self.entry_usuario.get()
         contrasena = self.entry_contrasena.get()
-
-        if self.usuario.validar(usuario, contrasena):
-            messagebox.showinfo("Acceso correcto", "Inicio de sesion exitoso")
+        if self.usuarios_db.validar(usuario, contrasena):
+            messagebox.showinfo("Éxito", "Inicio de sesión correcto")
             self.ventana_login.destroy()
-
             ventana_principal = VentanaPrincipal()
             ventana_principal.iniciar()
         else:
             messagebox.showerror("Error", "Usuario o contraseña incorrectos")
-
