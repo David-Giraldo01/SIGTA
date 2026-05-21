@@ -141,4 +141,9 @@ class VentanaPrincipal:
         else:
             messagebox.showinfo("Alertas", "No hay tareas próximas a vencer")
 
+    def limpiar_campos(self):
+        self.entry_nombre.delete(0, tk.END)
+        self.entry_descripcion.delete(0, tk.END)
+        self.entry_materia.delete(0, tk.END)
+        self.entry_fecha.delete(0, tk.END)
 
