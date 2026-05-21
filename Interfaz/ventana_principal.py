@@ -18,3 +18,51 @@ class VentanaPrincipal:
     def iniciar(self):
         self.ventana.mainloop()
 
+    def crear_interfaz(self):
+        tk.Label(
+            self.ventana,
+            text="Gestión de Tareas Académicas",
+            font=("Arial", 18, "bold")
+        ).pack(pady=10)
+
+        frame = tk.Frame(self.ventana)
+        frame.pack(pady=10)
+
+        tk.Label(frame, text="Nombre:").grid(row=0, column=0)
+        self.entry_nombre = tk.Entry(frame, width=30)
+        self.entry_nombre.grid(row=1, column=1)
+
+        tk.Label(frame, text="Descripción:").grid(row=1, column=0)
+        self.entry_descripcion = tk.Entry(frame, width=30)
+        self.entry_descripcion.grid(row=1, column=1)
+
+        tk.Label(frame, text="Materia:").grid(row=2, column=0)
+        self.entry_materia = tk.Entry(frame, width=30)
+        self.entry_materia.grid(row=2, column=1)
+
+        tk.Label(frame, text="Fecha entrega YYYY-MM-DD:").grid(row=3, column=0)
+        self.entry_fecha = tk.Entry(frame, width=30)
+        self.entry_fecha.grid(row=3, column=1)
+
+        botones = tk.Frame(self.ventana)
+        botones.pack(pady=10)
+
+        tk.Button(botones, text="Agregar tarea", command=self.agregar_tarea).grid(row=0, column=0, padx=5)
+        tk.Button(botones, text="Completar tarea", command=self.completar_tarea).grid(row=0, column=1, padx=5)
+        tk.Button(botones, text="Eliminar tarea", command=self.eliminar_tarea).grid(row=0, column=2, padx=5)
+        tk.Button(botones, text="Ver alertas", command=self.ver_alertas).grid(row=0, column=3, padx=5)
+
+        columnas = ("ID", "Nombre", "Descripción", "Materia", "Fecha", "Estado", "Prioridad")
+
+        self.tabla = ttk.Treeview(
+            self.ventana,
+            columns=columnas,
+            show="headings"
+        )
+
+        for columna in columnas:
+            self.tabla.heading(columna, text=columna)
+            self.tabla.column(columna, width=110)
+
+        self.tabla.pack(pady=20, fill="both", expand=True)
+
