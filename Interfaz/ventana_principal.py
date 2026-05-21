@@ -117,3 +117,19 @@ class VentanaPrincipal:
         item = self.tabla.item(seleccion)
         id_tarea = item["values"][0]
 
+        self.gestor.completar_tarea(id_tarea)
+        self.cargar_tareas()
+
+    def eliminar_tarea(self):
+        seleccion = self.tabla.selection()
+
+        if not seleccion:
+            messagebox.showwarning("Seleccione tarea", "Debe seleccionar una tarea")
+            return
+
+        item = self.tabla.item(seleccion)
+        id_tarea = item["values"][0]
+
+        self.gestor.eliminar_tarea(id_tarea)
+        self.cargar_tareas()
+
