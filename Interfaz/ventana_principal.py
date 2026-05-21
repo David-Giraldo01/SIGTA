@@ -87,3 +87,22 @@ class VentanaPrincipal:
         messagebox.showinfo("Éxito", "Tarea agregada correctamente")
         self.limpiar_campos()
         self.cargar_tareas()
+
+    def cargar_tareas(self):
+        for fila in self.tabla.get_children():
+            self.tabla.delete(fila)
+
+        for tarea in self.gestor.listar_tareas():
+            self.tabla.insert(
+                "",
+                tk.END,
+                values=(
+                    tarea.id,
+                    tarea.nombre,
+                    tarea.descripcion,
+                    tarea.materia,
+                    tarea.fecha_entrega,
+                    tarea.estado,
+                    tarea.prioridad
+                )
+            )
