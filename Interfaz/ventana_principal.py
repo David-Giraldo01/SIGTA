@@ -133,3 +133,12 @@ class VentanaPrincipal:
         self.gestor.eliminar_tarea(id_tarea)
         self.cargar_tareas()
 
+    def ver_alertas(self):
+        alertas = self.gestor.obtener_alertas()
+
+        if alertas:
+            messagebox.showwarning("Alertas", "\n".join(alertas))
+        else:
+            messagebox.showinfo("Alertas", "No hay tareas próximas a vencer")
+
+
