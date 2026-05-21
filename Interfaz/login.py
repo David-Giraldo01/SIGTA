@@ -47,7 +47,7 @@ class Login:
 
     def validar_login(self):
         usuario = self.entry_usuario.get()
-        contrasena = self.entry_contrasena()
+        contrasena = self.entry_contrasena.get()
 
         if self.usuario.validar(usuario, contrasena):
             messagebox.showinfo("Acceso correcto", "Inicio de sesion exitoso")
