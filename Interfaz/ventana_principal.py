@@ -66,3 +66,24 @@ class VentanaPrincipal:
 
         self.tabla.pack(pady=20, fill="both", expand=True)
 
+    def agregar_tarea(self):
+        nombre = self.entry_nombre.get()
+        descripcion = self.entry_descripcion.get()
+        materia = self.entry_materia.get()
+        fecha = self.entry_fecha.get()
+
+        if nombre=="" or descripcion =="" or materia =="" or fecha =="":
+            messagebox.showwarning("Campos incompletos", "Todos los campos son obligatorios.")
+            return
+
+        try:
+            datetime.strptime(fecha, "%Y-%m-%d")
+        except ValueError:
+            messagebox.showerror("Error", "La fecha debe tener formato YYYY-MM-DD")
+            return
+
+        self.gestor.crear_tarea(nombre, descripcion, materia, fecha)
+
+        messagebox.showinfo("Éxito", "Tarea agregada correctamente")
+        self.limpiar_campos()
+        self.cargar_tareas()
