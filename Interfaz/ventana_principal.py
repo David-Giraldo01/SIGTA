@@ -106,3 +106,14 @@ class VentanaPrincipal:
                     tarea.prioridad
                 )
             )
+
+    def completar_tarea(self):
+        seleccion = self.tabla.selection()
+
+        if not seleccion:
+            messagebox.showwarning("Seleccione tarea", "Debe seleccionar una tarea")
+            return
+
+        item = self.tabla.item(seleccion)
+        id_tarea = item["values"][0]
+
