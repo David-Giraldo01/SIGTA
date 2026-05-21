@@ -31,6 +31,18 @@ class Login:
             text="Sistema Inteligente de Tareas Académicas"
         ).pack(pady=5)
 
+        def registrar_usuario(self):
+            usuario = self.entry_usuario.get()
+            contrasena = self.entry_contrasena.get()
+            if usuario == "" or contrasena == "":
+                messagebox.showwarning("Campos vacíos", "Debe ingresar usuario y contraseña")
+                return
+            exito = self.usuarios_db.agregar_usuario(usuario, contrasena)
+            if exito:
+                messagebox.showinfo("Éxito", f"Usuario '{usuario}' registrado correctamente")
+            else:
+                messagebox.showerror("Error", f"El usuario '{usuario}' ya existe")
+
         tk.Label(self.ventana_login, text="Usuario").pack()
         self.entry_usuario = tk.Entry(self.ventana_login)
         self.entry_usuario.pack(pady=5)
@@ -60,15 +72,3 @@ class Login:
             ventana_principal.iniciar()
         else:
             messagebox.showerror("Error", "Usuario o contraseña incorrectos")
-
-    def registrar_usuario(self):
-        usuario = self.entry_usuario.get()
-        contrasena = self.entry_contrasena.get()
-        if usuario == "" or contrasena == "":
-            messagebox.showwarning("Campos vacíos", "Debe ingresar usuario y contraseña")
-            return
-        exito = self.usuarios_db.agregar_usuario(usuario, contrasena)
-        if exito:
-            messagebox.showinfo("Éxito", f"Usuario '{usuario}' registrado correctamente")
-        else:
-            messagebox.showerror("Error", f"El usuario '{usuario}' ya existe")
