@@ -1,7 +1,7 @@
 import tkinter as tk
 from tkinter import messagebox
-from modelo.usuario import Usuario
-from interfaz.ventana_principal import VentanaPrincipal
+from Model.usuario import Usuario
+from Interfaz.ventana_principal import VentanaPrincipal
 
 
 class Login:
