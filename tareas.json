@@ -1,0 +1,22 @@
+[
+    {
+        "id": 1,
+        "usuario_id": 1,
+        "nombre": "jsdjshjd",
+        "descripcion": "jhsbadjas",
+        "materia": "ksadnjasd",
+        "fecha_entrega": "2026-05-15",
+        "estado": "Pendiente",
+        "prioridad": "Alta"
+    },
+    {
+        "id": 2,
+        "usuario_id": 2,
+        "nombre": "asjndsjad",
+        "descripcion": "sjndjasdisa",
+        "materia": "sidiasd",
+        "fecha_entrega": "2026-05-27",
+        "estado": "Completada",
+        "prioridad": "Media"
+    }
+]

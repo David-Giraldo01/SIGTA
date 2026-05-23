@@ -5,19 +5,34 @@ import json
 import os
 from Model.tarea import Tarea
 
+# Model/gestor_tareas.py
+# Model/gestor_tareas.py
+import json
+from Model.tarea import Tarea
+from Model.priorizador import Priorizador
 class GestorTareas:
-    def __init__(self, db_path="tareas.json"):
-        self.db_path = db_path
-        if not os.path.exists(db_path):
-            with open(db_path, "w") as f:
+    def __init__(self, tareas_file="tareas.json"):
+        self.tareas_file = tareas_file
+
+        try:
+            with open(self.tareas_file, "r") as f:
+                json.load(f)
+        except:
+            with open(self.tareas_file, "w") as f:
                 json.dump([], f)
 
     def crear_tarea(self, usuario_id, nombre, descripcion, materia, fecha_entrega):
-        with open(self.db_path, "r") as f:
-            tareas = json.load(f)
-        tarea_id = len(tareas) + 1
+        with open(self.tareas_file, "r") as f:
+            tareas_data = json.load(f)
+
+        tarea_id = 1
+        if tareas_data:
+            tarea_id = max(t["id"] for t in tareas_data) + 1
+
         tarea = Tarea(tarea_id, usuario_id, nombre, descripcion, materia, fecha_entrega)
-        tareas.append({
+        tarea.prioridad = Priorizador.asignar_prioridad(tarea)
+
+        tareas_data.append({
             "id": tarea.id,
             "usuario_id": tarea.usuario_id,
             "nombre": tarea.nombre,
@@ -27,34 +42,42 @@ class GestorTareas:
             "estado": tarea.estado,
             "prioridad": tarea.prioridad
         })
-        with open(self.db_path, "w") as f:
-            json.dump(tareas, f)
+
+        with open(self.tareas_file, "w") as f:
+            json.dump(tareas_data, f, indent=4)
+
         return tarea
 
     def listar_tareas(self, usuario_id):
-        with open(self.db_path, "r") as f:
-            tareas_json = json.load(f)
+        with open(self.tareas_file, "r") as f:
+            tareas_data = json.load(f)
+
         tareas = []
-        for f in tareas_json:
-            if f["usuario_id"] == usuario_id:
-                t = Tarea(f["id"], f["usuario_id"], f["nombre"], f["descripcion"], f["materia"], f["fecha_entrega"])
-                t.estado = f["estado"]
-                t.prioridad = f["prioridad"]
-                tareas.append(t)
+        for t in tareas_data:
+            if t["usuario_id"] == usuario_id:
+                tarea = Tarea(t["id"], t["usuario_id"], t["nombre"], t["descripcion"], t["materia"], t["fecha_entrega"])
+                tarea.estado = t["estado"]
+                tarea.prioridad = t["prioridad"]
+                tareas.append(tarea)
+
         return tareas
 
     def completar_tarea(self, usuario_id, tarea_id):
-        with open(self.db_path, "r") as f:
-            tareas = json.load(f)
-        for t in tareas:
+        with open(self.tareas_file, "r") as f:
+            tareas_data = json.load(f)
+
+        for t in tareas_data:
             if t["id"] == tarea_id and t["usuario_id"] == usuario_id:
                 t["estado"] = "Completada"
-        with open(self.db_path, "w") as f:
-            json.dump(tareas, f)
+
+        with open(self.tareas_file, "w") as f:
+            json.dump(tareas_data, f, indent=4)
 
     def eliminar_tarea(self, usuario_id, tarea_id):
-        with open(self.db_path, "r") as f:
-            tareas = json.load(f)
-        tareas = [t for t in tareas if not (t["id"] == tarea_id and t["usuario_id"] == usuario_id)]
-        with open(self.db_path, "w") as f:
-            json.dump(tareas, f)
+        with open(self.tareas_file, "r") as f:
+            tareas_data = json.load(f)
+
+        tareas_data = [t for t in tareas_data if not (t["id"] == tarea_id and t["usuario_id"] == usuario_id)]
+
+        with open(self.tareas_file, "w") as f:
+            json.dump(tareas_data, f, indent=4)
